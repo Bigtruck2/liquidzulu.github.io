@@ -9,6 +9,7 @@ import {
     unicodeArrows,
     fixObsidianDashes,
     obsidianWikilinks,
+    paragraphLinks,
 } from './src/util/markdown-plugins';
 import {
     wikilinksToHypertextLinks,
@@ -34,6 +35,7 @@ export default defineConfig({
             // mmmm, curry
             () => (ast, file) => {
                 visit(ast, 'text', unicodeArrows);
+                visit(ast, 'text', paragraphLinks);
 
                 if (isObsidian(file)) {
                     visit(ast, 'text', fixObsidianDashes);

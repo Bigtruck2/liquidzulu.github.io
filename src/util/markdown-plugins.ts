@@ -5,6 +5,7 @@ type NodeNodeMap = (node: TNodeValue) => TNodeValue;
 type NodeStringMap = (node: TNodeValue) => string;
 import { regexReplace } from './regexReplace';
 import { wikilinksToHypertextLinks } from './wikilinks';
+import {paragraphRegex} from './paragraphRegex'
 
 const nodeReplacer: (
     node: TNodeValue,
@@ -67,7 +68,11 @@ export const fixObsidianDashes: NodeNodeMap = node =>
             x => '–'
         ),
     });
-
+export const paragraphLinks: NodeNodeMap = node =>
+    Object.assign(node, {
+        type: 'html',
+        value: paragraphRegex(node.value)
+    });
 export const obsidianWikilinks: (files: string[]) => NodeNodeMap =
     files => node =>
         Object.assign(node, {
