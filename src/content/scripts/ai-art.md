@@ -1,3 +1,9 @@
+---
+title: 'In Defense of AI Image Generation'
+description: 'The typical arguments against the use of AI image generators are all severely flawed---I will show that they further represent a smokescreen to cover up a neo-Marxism endemic to the artistic community.'
+date: 2024-04-14
+---
+
 # The Argument Against AI Image Generation
 
 A typical argument one comes across from those in the anti-AI image generation camp goes something like: &ldquo;AI image generation steals art from artists putting them out of a job; and what it produces can&rsquo;t even be properly considered art anyway.&rdquo; To analyse this stance properly, it must be broken into its constituent parts:
