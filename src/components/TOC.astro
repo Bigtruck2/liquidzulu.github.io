@@ -61,6 +61,7 @@ import { Debug } from 'astro/components';
                         usure: bool
                     ) => {
                         if (usure) {
+                            element.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
                             modClass(
                                 element,
                                 [
@@ -94,6 +95,7 @@ import { Debug } from 'astro/components';
                         heights.findIndex(e => e.height > 0) - 1;
 
                     sidebarHeadings.forEach(h => {
+                        
                         switch (toHighlight) {
                             // if findIndex cant find it
                             case -2: {
