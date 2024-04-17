@@ -61,7 +61,8 @@ import { Debug } from 'astro/components';
                         usure: bool
                     ) => {
                         if (usure) {
-                            element.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+                            //puts selected section into view. Behavoir: smooth and auto affect regular scrolling on the page so leave instant
+                            element.scrollIntoView({ block: 'nearest', behavior: 'instant'});
                             modClass(
                                 element,
                                 [
