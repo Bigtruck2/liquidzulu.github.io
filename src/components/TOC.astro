@@ -61,8 +61,18 @@ import { Debug } from 'astro/components';
                         usure: bool
                     ) => {
                         if (usure) {
-                            //puts selected section into view. Behavoir: smooth and auto affect regular scrolling on the page so leave instant
-                            element.scrollIntoView({ block: 'nearest', behavior: 'instant'});
+                            //check if element is on screen
+                            var rect = element.getBoundingClientRect();
+                            var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+                            if ((rect.bottom < 0 || rect.top - viewHeight >= 0)) {
+                                //if not on screen then move element to view
+                                if(rect.top > viewHeight/2){
+                                    console.log('botom')
+                                    element.parentElement.parentElement.parentElement.parentElement.scroll(0, element.offsetTop- viewHeight + element.offsetHeight);
+                                }else{
+                                    element.parentElement.parentElement.parentElement.parentElement.scroll(0,element.offsetTop);
+                                }
+                            }
                             modClass(
                                 element,
                                 [
