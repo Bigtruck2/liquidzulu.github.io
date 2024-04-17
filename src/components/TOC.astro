@@ -61,6 +61,18 @@ import { Debug } from 'astro/components';
                         usure: bool
                     ) => {
                         if (usure) {
+                            //check if element is on screen
+                            var rect = element.getBoundingClientRect();
+                            var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+                            if ((rect.bottom < 0 || rect.top - viewHeight >= 0)) {
+                                //if not on screen then move element to view
+                                if(rect.top > viewHeight/2){
+                                    console.log('botom')
+                                    element.parentElement.parentElement.parentElement.parentElement.scroll({left:0, top:element.offsetTop- viewHeight + element.offsetHeight,behavoir:"smooth"});
+                                }else{
+                                    element.parentElement.parentElement.parentElement.parentElement.scroll({left:0, top:element.offsetTop,behavoir:"smooth"});
+                                }
+                            }
                             modClass(
                                 element,
                                 [
@@ -94,6 +106,7 @@ import { Debug } from 'astro/components';
                         heights.findIndex(e => e.height > 0) - 1;
 
                     sidebarHeadings.forEach(h => {
+                        
                         switch (toHighlight) {
                             // if findIndex cant find it
                             case -2: {
@@ -238,5 +251,6 @@ import { Debug } from 'astro/components';
 <style lang="scss">
     #sidebar {
         box-shadow: inset 0 0 1rem -0.1rem rgba(0, 0, 0, 1);
+        scroll-behavior: smooth;
     }
 </style>
