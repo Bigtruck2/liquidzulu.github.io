@@ -19,13 +19,12 @@ const testimonials = ['shadiversity','nai','0stefanos','adrian','monarcho-hoppea
 <script>
     const testimonials = ['shadiversity','nai','0stefanos','adrian','monarcho-hoppean','sue-donimus']
     document.getElementById(testimonials[0]).style.width = '100%'
-    let iteration = 0;
     if (!!document.getElementById('testimonial-stack')) {
         setInterval(async () => {
-            iteration++;
-            const progress = document.getElementById(testimonials[iteration]);
+            const progress = document.getElementById(testimonials[1]);
             progress.style.width='100%'
-            const previousProgress = document.getElementById(testimonials[iteration-1]);
+            const previousProgress = document.getElementById(testimonials[0]);
+            testimonials.push(testimonials.splice(0, 1)[0]);
             previousProgress.style.width='1%'
             const stack = document.getElementById('testimonial-stack').children;
             stack[stack.length - 1].after(stack[0]);
