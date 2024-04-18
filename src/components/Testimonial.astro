@@ -9,17 +9,17 @@ const testimonial = await getEntryBySlug('testimonials', slug);
 ---
 
 <NoisePanel
-    xtraClasses="w-[30rem] m-12 hover:ring hover:ring-offset-2 hover:ring-offset-transparent hover:ring-orange-500">
+    xtraClasses="h-[28rem] w-[30rem] m-12 hover:ring hover:ring-offset-2 hover:ring-offset-transparent hover:ring-orange-500">
     <a
         title={'Testimonial from ' + testimonial.data.name}
-        class="p-4"
+        class="p-4 items-stretch"
         href={testimonial.data.link}>
         <div class="flex flex-cols-2 mb-2">
             <img
                 class="w-20 h-20 rounded-full"
                 src={`/pfp/${testimonial.data.slug}.png`}
             /><div class="my-auto ml-2">
-                <h2 class="text-2xl font-bold">
+                <h2 class="text-lg font-bold">
                     {testimonial.data.name}
                 </h2>
                 <p class="text-slate-400">
@@ -27,8 +27,12 @@ const testimonial = await getEntryBySlug('testimonials', slug);
                 </p>
             </div>
         </div>
-        <p class="p-4 text-4xl text-center">
+        <p class="p-4 text-2xl text-center h-[18rem]">
             {testimonial.body}
+        </p>
+        <p class="p-4 text-sm text-left text-slate-400">
+            {testimonial.data.for.length > 0 ? 'Reviewing: ' : ''}
+            <i>{testimonial.data.for.join(', ')}</i>
         </p>
     </a>
 </NoisePanel>

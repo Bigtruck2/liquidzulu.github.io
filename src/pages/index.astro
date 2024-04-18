@@ -20,7 +20,7 @@ import Layout from '../layouts/Layout.astro';
         setInterval(async () => {
             const stack = document.getElementById('testimonial-stack').children;
             stack[stack.length - 1].after(stack[0]);
-        }, 7e3);
+        }, 14e3);
     }
 </script>
 
@@ -45,15 +45,16 @@ import Layout from '../layouts/Layout.astro';
                             starts here.
                         </h2>
                     </div>
-                    <!--<div
-                         class="stack transition-all ease-in-out duration-1000"
-                         id="testimonial-stack">
-                         <Testimonial slug="barack-obama" />
-                         <Testimonial slug="barack-obama" />
-                         <Testimonial slug="barack-obama" />
-                         <Testimonial slug="barack-obama" />
-                         <Testimonial slug="barack-obama" />
-                         </div>-->
+                    <div
+                        class="stack transition-all ease-in-out duration-1000 hidden md:grid"
+                        id="testimonial-stack">
+                        <Testimonial slug="shadiversity" />
+                        <Testimonial slug="nai" />
+                        <Testimonial slug="0stefanos" />
+                        <Testimonial slug="adrian" />
+                        <Testimonial slug="monarcho-hoppean" />
+                        <Testimonial slug="sue-donimus" />
+                    </div>
                 </div>
             </div>
             <div
@@ -118,9 +119,7 @@ import Layout from '../layouts/Layout.astro';
                         </p>
                     </ScrollShow>
                     <ScrollShow place="center">
-                        <h1 class="text-slate-50 text-6xl font-black emphasis">
-                            Start now!
-                        </h1>
+                        <h1 class="text-6xl font-black emphasis">Start now!</h1>
                         <p class="text-2xl lg:w-[40vw] md:w-[55vw] w-[80vw]">
                             What are you waiting for? The courses provided on
                             this website will bring you to expertise in their

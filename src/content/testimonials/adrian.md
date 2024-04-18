@@ -1,10 +1,9 @@
 ---
-name: '@0Stefanos'
+name: 'Adrian'
 slug: 'adrian'
-job: ''
-link: 'blah'
-for: ['libertarian-ethics']
+job: 'Springtime of Nations founder'
+link: ''
+for: ['The Fundamentals of Libertarian Ethics']
 ---
 
 A+ 10/10
-1 hour in
