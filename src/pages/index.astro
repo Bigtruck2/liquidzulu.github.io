@@ -21,11 +21,9 @@ const testimonials = ['shadiversity','nai','0stefanos','adrian','monarcho-hoppea
     document.getElementById(testimonials[0]).style.width = '100%'
     if (!!document.getElementById('testimonial-stack')) {
         setInterval(async () => {
-            const progress = document.getElementById(testimonials[1]);
-            progress.style.width='100%'
-            const previousProgress = document.getElementById(testimonials[0]);
+            document.getElementById(testimonials[1]).style.width='100%';
+            document.getElementById(testimonials[0]).style.width='1%';
             testimonials.push(testimonials.splice(0, 1)[0]);
-            previousProgress.style.width='1%'
             const stack = document.getElementById('testimonial-stack').children;
             stack[stack.length - 1].after(stack[0]);
         }, 14e3);
