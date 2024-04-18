@@ -13,11 +13,20 @@ import {
     Testimonial,
 } from '../components';
 import Layout from '../layouts/Layout.astro';
+const testimonials = ['shadiversity','nai','0stefanos','adrian','monarcho-hoppean','sue-donimus']
 ---
 
 <script>
+    const testimonials = ['shadiversity','nai','0stefanos','adrian','monarcho-hoppean','sue-donimus']
+    document.getElementById(testimonials[0]).style.width = '100%'
+    let iteration = 0;
     if (!!document.getElementById('testimonial-stack')) {
         setInterval(async () => {
+            iteration++;
+            const progress = document.getElementById(testimonials[iteration]);
+            progress.style.width='100%'
+            const previousProgress = document.getElementById(testimonials[iteration-1]);
+            previousProgress.style.width='1%'
             const stack = document.getElementById('testimonial-stack').children;
             stack[stack.length - 1].after(stack[0]);
         }, 14e3);
@@ -48,12 +57,11 @@ import Layout from '../layouts/Layout.astro';
                     <div
                         class="ml-14 stack transition-all ease-in-out duration-1000 hidden min-[1250px]:grid"
                         id="testimonial-stack">
-                        <Testimonial slug="shadiversity" />
-                        <Testimonial slug="nai" />
-                        <Testimonial slug="0stefanos" />
-                        <Testimonial slug="adrian" />
-                        <Testimonial slug="monarcho-hoppean" />
-                        <Testimonial slug="sue-donimus" />
+                        {testimonials.map(name=><Testimonial slug={name}>
+                        <div id={name} class=" w-[1%] relative h-[15px] overflow-hidden rounded-full shadow-mini-inset transition-[width] duration-[14s] ease-in" >
+                            <div class="h-full w-full flex-1 bg-primary">
+                        </div>
+                        </div></Testimonial>)}
                     </div>
                 </div>
             </div>
