@@ -9,7 +9,7 @@ const testimonial = await getEntryBySlug('testimonials', slug);
 ---
 
 <NoisePanel
-    xtraClasses="h-[28rem] w-[30rem] m-12 hover:ring hover:ring-offset-2 hover:ring-offset-transparent hover:ring-orange-500">
+    xtraClasses="h-[29rem] w-[30rem] m-12 hover:ring hover:ring-offset-2 hover:ring-offset-transparent hover:ring-orange-500">
     <a
         title={'Testimonial from ' + testimonial.data.name}
         class="p-4 items-stretch"
@@ -30,6 +30,7 @@ const testimonial = await getEntryBySlug('testimonials', slug);
         <p class="p-4 text-2xl text-center h-[18rem]">
             {testimonial.body}
         </p>
+        <slot/>
         <p class="p-4 text-sm text-left text-slate-400">
             {testimonial.data.for.length > 0 ? 'Reviewing: ' : ''}
             <i>{testimonial.data.for.join(', ')}</i>
