@@ -8,6 +8,7 @@ export { default as Icon } from './Icon.astro';
 export { default as LazyImage } from './LazyImage.astro';
 export { default as LessonPagination } from './LessonPagination.astro';
 export { default as Logo } from './Logo.astro';
+export { default as MainTestimonials } from './MainTestimonials.astro';
 export { default as Marquee } from './Marquee.astro';
 export { default as Navbar } from './Navbar.astro';
 export { default as NoisePanel } from './NoisePanel.astro';
