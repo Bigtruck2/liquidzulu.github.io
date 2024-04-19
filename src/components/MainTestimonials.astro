@@ -1,0 +1,74 @@
+---
+import { getCollection, getEntryBySlug } from 'astro:content';
+import { Testimonial } from './';
+
+const testimonials = await getCollection('testimonials');
+
+const mainTestimonials = [
+    'shadiversity', // 8
+    'nai', // 14
+    '0stefanos', // 5
+    'adrian', // 8
+    'monarcho-hoppean', // 13
+    'sue-donimus', // 5
+].map(slug => testimonials.find(testimonial => testimonial.slug == slug));
+---
+
+<main-testimonials
+    data-testimonials={JSON.stringify(testimonials)}
+    data-main-testimonials={JSON.stringify(mainTestimonials)}>
+    <div
+        class="ml-14 stack transition-all ease-in-out duration-1000 hidden min-[1250px]:grid"
+        id="testimonial-stack">
+        {
+            mainTestimonials.map(testimonial => (
+                <Testimonial slug={testimonial.slug}>
+                    <div
+                        id={'loading-bar-' + testimonial.slug}
+                        class={` w-[1%] relative h-[15px] overflow-hidden rounded-full shadow-mini-inset transition-[width]  ease-in`}
+                        style={`transition-duration: ${
+                            testimonial.data.duration * 1000
+                        }ms;`}>
+                        <div class="h-full w-full flex-1 bg-primary" />
+                    </div>
+                </Testimonial>
+            ))
+        }
+    </div>
+</main-testimonials>
+
+<script>
+    class MainTestimonials extends HTMLElement {
+        constructor() {
+            super();
+            const testimonials = JSON.parse(this.dataset.mainTestimonials);
+            const testimonialTick = async index => {
+                await new Promise(r =>
+                    setTimeout(async () => {
+                        document.getElementById(
+                            'loading-bar-' + testimonials[1].slug
+                        ).style.width = '100%';
+                        document.getElementById(
+                            'loading-bar-' + testimonials[0].slug
+                        ).style.width = '1%';
+                        testimonials.push(testimonials.splice(0, 1)[0]);
+                        const stack =
+                            document.getElementById(
+                                'testimonial-stack'
+                            ).children;
+                        stack[stack.length - 1].after(stack[0]);
+                        r();
+                    }, testimonials[0].data.duration * 1000)
+                );
+                testimonialTick((index + 1) % testimonials.length);
+            };
+            document.getElementById(
+                'loading-bar-' + testimonials[0].slug
+            ).style.width = '100%';
+            if (!!document.getElementById('testimonial-stack')) {
+                testimonialTick(0);
+            }
+        }
+    }
+    customElements.define('main-testimonials', MainTestimonials);
+</script>
