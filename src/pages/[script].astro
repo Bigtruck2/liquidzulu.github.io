@@ -78,7 +78,7 @@ import { Debug } from 'astro/components';
         }
     }
 </script>
-
+<script src="../scripts/paragraphLinks.ts"/>
 <script>
     // this script adds little links next to the section headings, if you have js off then fuck you it wont work because I wasn't clever enough to make it work in pure css
     const headerLevels = 4;
@@ -172,6 +172,26 @@ import { Debug } from 'astro/components';
 
             &:hover {
                 .section-heading-link {
+                    @apply opacity-[0.2];
+                }
+            }
+        }
+        .section-paragraph-link {
+            -webkit-mask: url('/link.svg') no-repeat 50% 50%;
+            mask: url('/link.svg') no-repeat 50% 50%;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            @apply shrink-0 w-[2.5rem] h-[2rem] overflow-visible bg-slate-50 opacity-[0] ml-[-2.5rem] mr-2 transition-all;
+
+            &:focus {
+                @apply opacity-[0.8] bg-sky-500 scale-110;
+            }
+        }
+        .paragraph-wrapper {
+            @apply flex items-center justify-center;
+
+            &:hover {
+                .section-paragraph-link {
                     @apply opacity-[0.2];
                 }
             }
