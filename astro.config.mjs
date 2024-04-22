@@ -5,6 +5,7 @@ import remarkWikilink from '@portaljs/remark-wiki-link';
 import { visit } from 'unist-util-visit';
 import { readdir } from 'node:fs/promises';
 import { regexReplace } from './src/util/regexReplace';
+
 import {
     unicodeArrows,
     fixObsidianDashes,
@@ -35,13 +36,18 @@ export default defineConfig({
             // mmmm, curry
             () => (ast, file) => {
                 visit(ast, 'text', unicodeArrows);
-                visit(ast, 'text', paragraphLinks);
 
                 if (isObsidian(file)) {
                     visit(ast, 'text', fixObsidianDashes);
                     visit(ast, 'text', obsidianWikilinks(filesProc));
                 }
             },
+        ],
+        rehypePlugins:[
+            ()=>(ast)=>{
+                visit(ast,'element',paragraphLinks);
+
+            }
         ],
     },
 });
