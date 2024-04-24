@@ -138,7 +138,7 @@ export const paragraphRegex = (
         text+=child.value
         }
     });
-    node.properties.id = numToHash(hasher(getTopCommonWords(text)),8)
+    node.properties.id = numToHash(hasher(getTopCommonWords(text)),8);
     }
     
 };
