@@ -5,12 +5,13 @@ import { Testimonial } from './';
 const testimonials = await getCollection('testimonials');
 
 const mainTestimonials = [
-    'shadiversity', // 8
-    'nai', // 14
-    '0stefanos', // 5
-    'adrian', // 8
-    'monarcho-hoppean', // 13
-    'sue-donimus', // 5
+    'shadiversity',
+    'tik',
+    'nai',
+    '0stefanos',
+    'adrian',
+    'monarcho-hoppean',
+    'sue-donimus',
 ].map(slug => testimonials.find(testimonial => testimonial.slug == slug));
 ---
 

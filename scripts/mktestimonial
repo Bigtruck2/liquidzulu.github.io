@@ -5,6 +5,6 @@ slug=$(echo "$name" | get-slug)
 file="$(direnvlocation)/src/content/testimonials/$slug.md"
 
 touch "$file"
-output="---\nname: '$name'\nslug: '$slug'\njob: ''\nlink: ''\nfor: ['']\n---\n\nLorem ipsum dolor sit amet."
+output="---\nname: '$name'\nslug: '$slug'\njob: ''\nlink: ''\nduration: 8\nfor: ['']\n---\n\nLorem ipsum dolor sit amet."
 printf -- "$output" >"$file"
 printf -- "$output"
