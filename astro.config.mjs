@@ -5,10 +5,12 @@ import remarkWikilink from '@portaljs/remark-wiki-link';
 import { visit } from 'unist-util-visit';
 import { readdir } from 'node:fs/promises';
 import { regexReplace } from './src/util/regexReplace';
+
 import {
     unicodeArrows,
     fixObsidianDashes,
     obsidianWikilinks,
+    paragraphLinks,
 } from './src/util/markdown-plugins';
 import {
     wikilinksToHypertextLinks,
@@ -40,6 +42,12 @@ export default defineConfig({
                     visit(ast, 'text', obsidianWikilinks(filesProc));
                 }
             },
+        ],
+        rehypePlugins:[
+            ()=>(ast)=>{
+                visit(ast,'element',paragraphLinks);
+
+            }
         ],
     },
 });
